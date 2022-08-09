@@ -27,7 +27,7 @@
             active: false,
         },
     ];
-    let filteredUsers = users;
+    $:filteredUsers = users;
 
     const filter = ({detail}) => {
         if(detail === "null"){
@@ -37,13 +37,17 @@
         const active = detail === "true";
         filteredUsers = users.filter((user) => user.active === active);
     };
+
+    const remove = ({detail}) =>{
+        users = users.filter((user) => user.id !== detail)
+    };
 </script>
 
 <div>
     <h1 class="text-2xl text-center mt-10">ユーザーリスト</h1>
     <FilterUser on:filter={filter}/>
     {#each filteredUsers as user, i (user.id)}
-        <User {user} {i} />
+        <User on:remove={remove} {user} {i} />
     {:else}
         <p>ユーザーはいません</p>
     {/each}
