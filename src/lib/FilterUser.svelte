@@ -6,7 +6,8 @@
        dispatch('filter',e.target.value)
     };
 </script>
-<div class="ml-4 mt-4">
+<div class="mt-4">
+    <label for="user-filter">フィルターユーザー</label>
     <select
         on:change={filter}
         name="user-filter"
