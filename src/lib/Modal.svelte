@@ -21,10 +21,14 @@
             <div
                 class="relative bg-white rounded-lg px-4 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6"
             >
-                <div class="mt-5 sm:mt-6">
-                    <button class="px-2 py-1 border rounded hover:bg-gray-200 "
-                    on:click={close}>Close</button>
-                </div>
+                <form class="mt-5 sm:mt-6 bg-white">
+                    <slot />
+                    <div class="flex justify-between">
+                        <button class="px-2 py-1 bg-white text-black border-solid border-1 border-gray-200 rounded hover:bg-gray-400 "
+                        on:click={close}>Close</button>
+                        <slot name="right-button" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
